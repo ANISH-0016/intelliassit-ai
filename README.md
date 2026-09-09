@@ -28,57 +28,8 @@ Artificial Intelligence Major Capstone Project.
 
 ---
 
-## 🗂️ Project Structure
 
-```
-intelliassist/
-├── app.py                     # Streamlit UI (entry point)
-├── requirements.txt
-├── .env.example                # Optional API keys template
-├── .streamlit/config.toml      # Theme config
-├── src/
-│   ├── document_processor.py   # File parsing + chunking
-│   ├── vectorstore.py          # Embeddings + FAISS/TF-IDF search
-│   ├── rag_engine.py           # Retrieval + multi-backend generation
-│   ├── summarizer.py           # Abstractive/extractive summarisation
-│   └── sentiment_intent.py     # Sentiment & intent analysis
-└── data/
-    └── sample_docs/            # Sample document for demo/testing
-```
 
----
-
-## 🚀 Quick Start (Local)
-
-```bash
-# 1. Clone / unzip the project, then cd into it
-cd intelliassist
-
-# 2. Create a virtual environment (recommended)
-python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
-
-# 3. Install dependencies
-pip install -r requirements.txt
-
-# 4. (Optional) Add API keys for higher-quality answers
-cp .env.example .env
-# edit .env and add OPENAI_API_KEY or GEMINI_API_KEY — or skip this entirely
-
-# 5. Run the app
-streamlit run app.py
-```
-
-The app opens at `http://localhost:8501`. Upload a file from
-`data/sample_docs/about_intelliassist.txt` (or your own PDF/DOCX/TXT) and start
-chatting.
-
-**No API key? No problem.** Leave the key fields blank in the sidebar — the app
-still fully works using local TF-IDF search and an extractive answering engine.
-If `sentence-transformers` / `transformers` are installed, it silently upgrades
-to BERT embeddings and a local Flan-T5 generator, no key needed.
-
----
 
 ## 🧩 Architecture / RAG Workflow
 
@@ -107,41 +58,8 @@ to BERT embeddings and a local Flan-T5 generator, no key needed.
 
 ---
 
-## ☁️ Deployment
 
-### Streamlit Community Cloud (recommended, free)
-1. Push this project to a public/private GitHub repository.
-2. Go to [share.streamlit.io](https://share.streamlit.io) → "New app".
-3. Select your repo, branch, and set the main file to `app.py`.
-4. (Optional) Under **Advanced settings → Secrets**, add:
-   ```toml
-   OPENAI_API_KEY = "sk-..."
-   GEMINI_API_KEY = "..."
-   ```
-5. Click **Deploy**. Done.
 
-### Render
-1. Create a new **Web Service** from your GitHub repo.
-2. Build command: `pip install -r requirements.txt`
-3. Start command: `streamlit run app.py --server.port $PORT --server.address 0.0.0.0`
-4. Add environment variables for API keys if desired.
-
----
-
-## 🎥 For Your Demo Video (5–10 min)
-
-Suggested flow to hit all the submission-guideline points:
-1. **Intro (English, mandatory):** your name, college, course, year, internship domain, one-line project overview.
-2. **Problem statement:** explain the document-search pain point.
-3. **Architecture walkthrough:** show the diagram above / explain RAG briefly.
-4. **Live demo:**
-   - Upload `data/sample_docs/about_intelliassist.txt` (or your own PDF).
-   - Ask 2–3 questions in the **Chat** tab, show the source citations.
-   - Show the **Summarize** tab generating a summary.
-   - Show the **Insights** tab (sentiment/intent charts).
-   - Show the **History** tab.
-5. **Challenges & solutions:** e.g. "handled missing API keys with automatic fallback to local models so the app never breaks."
-6. **Final output/results + wrap-up.**
 
 ---
 
@@ -155,12 +73,3 @@ Suggested flow to hit all the submission-guideline points:
 
 ---
 
-## 📌 Notes for Evaluators
-
-- All four "graceful fallback" layers were a deliberate design choice to
-  guarantee reliability during grading/demo without requiring paid API access.
-- Chunking uses sentence-aware splitting with overlap to preserve context
-  across chunk boundaries, improving retrieval quality.
-- The app is stateless between sessions by default (in-memory vector store);
-  `VectorStore.save()` / `.load()` are provided if persistence across runs is
-  needed.
