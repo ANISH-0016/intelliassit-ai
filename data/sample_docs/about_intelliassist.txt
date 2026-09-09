@@ -1,0 +1,40 @@
+IntelliAssist AI - Project Overview
+
+IntelliAssist AI is a Smart Document AI Assistant built for the Artificial Intelligence
+Major Capstone Project. It addresses a common problem: students and businesses struggle
+to search and manage information scattered across PDFs, notes, and documents. Existing
+commercial AI tools are often expensive or fail to provide deep, custom understanding of
+a user's own documents.
+
+The solution is a chatbot that allows a user to upload their own documents and then ask
+natural-language questions about them. Under the hood, the system relies on Natural
+Language Processing techniques, vector embeddings, and a Retrieval-Augmented Generation
+(RAG) architecture. When a user asks a question, the system searches for the most
+relevant chunks of text from the uploaded documents using semantic similarity, then
+passes that context to a language model to produce a grounded, context-aware answer.
+
+Key features include document upload support for PDF, TXT, and DOCX formats; an AI
+chatbot powered by RAG; semantic search using TF-IDF and BERT-based embeddings; text
+summarisation using both abstractive and extractive techniques; sentiment and intent
+analysis on user queries; transparent source citation so users can verify answers; and
+a simple, clean Streamlit web interface.
+
+The technology stack spans the frontend, built entirely in Streamlit for rapid
+development and easy deployment; the backend and AI layer, written in Python and using
+LangChain-style orchestration along with Hugging Face models and optional OpenAI or
+Gemini API integration; the NLP layer, combining classic TF-IDF vectorisation with
+modern BERT embeddings; and a vector database layer using FAISS or ChromaDB for fast
+similarity search. The application is designed to be deployed easily on Streamlit
+Cloud or Render.
+
+A distinguishing design decision in this implementation is graceful degradation: if no
+API key is provided and heavy models are unavailable, the system automatically falls
+back to lightweight, fully local techniques such as TF-IDF retrieval and extractive
+summarisation. This ensures the application always produces a useful answer, which is
+particularly valuable during live demonstrations where network access or API quotas
+cannot be guaranteed.
+
+This project demonstrates an end-to-end AI application lifecycle: collecting and
+preprocessing documents, generating and storing embeddings, building a RAG pipeline,
+implementing chatbot and summarisation features, creating a user interface, and
+deploying and testing the final application.
