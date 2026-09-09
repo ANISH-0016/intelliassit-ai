@@ -4,11 +4,7 @@ An AI-powered chatbot that lets you upload documents (PDF / DOCX / TXT) and ask
 questions about them using **Retrieval-Augmented Generation (RAG)**. Built as an
 Artificial Intelligence Major Capstone Project.
 
-> **Why this project is demo-safe:** IntelliAssist AI works **fully offline with
-> zero API keys** (TF-IDF retrieval + extractive answers/summaries), and
-> automatically upgrades to BERT embeddings, a local Flan-T5 model, or
-> OpenAI/Gemini if those are available. You will never see a blank screen or a
-> crash during your live demo, even with no internet.
+
 
 ---
 
